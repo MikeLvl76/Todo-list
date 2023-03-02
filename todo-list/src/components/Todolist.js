@@ -14,7 +14,7 @@ export default function Todolist(props) {
     <div>
       <ul>
         {items
-          .filter((e) => props.filter ? e === props.filter : e)
+          .filter((e) => props.filter.length > 0 ? e === props.filter : e)
           .map((e, i) => (
             <li key={i}>
               <div>
