@@ -44,12 +44,16 @@ export default function Todolist() {
       </ReactModal>
       <ul>
         {todos
-          .filter((e) => (search.length > 0 ? e === search : e))
+          .filter((e) => (search.length > 0 ? e.text === search : e))
           .map((todo, i) => (
             <li key={i}>
               <div>
                 <p>{todo.text}</p>
-                <input type="checkbox" onClick={() => removeTodo(todo.id)} checked={false} />
+                <input
+                  type="checkbox"
+                  onClick={() => removeTodo(todo.id)}
+                  checked={false}
+                />
               </div>
             </li>
           ))}

@@ -9,5 +9,5 @@ export default function TodoApp() {
     <TodoProvider>
       <Todolist />
     </TodoProvider>
-  )
+  );
 }
