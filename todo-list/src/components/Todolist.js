@@ -9,9 +9,9 @@ export default function Todolist() {
   const [search, setSearch] = useState("");
 
   return (
-    <div>
-      <div>
-        <h1>Liste des tâches</h1>
+    <div className="mx-auto">
+      <div className="justify-center">
+        <h1 className="text-2xl text-italic text-white text-center w-fit bg-gray-900 rounded-full px-5 py-5 mt-5">Liste des tâches</h1>
       </div>
       <div>
         <input
@@ -44,7 +44,7 @@ export default function Todolist() {
       </ReactModal>
       <ul>
         {todos
-          .filter((e) => (search.length > 0 ? e.text === search : e))
+          .filter((e) => (search.length > 0 ? e.text.includes(search) : e)) // improve this
           .map((todo, i) => (
             <li key={i}>
               <div>
