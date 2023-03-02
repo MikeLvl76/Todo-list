@@ -1,26 +1,13 @@
-import { useState } from "react";
-import TodoAdd from "./TodoAdd";
+import { createContext } from "react";
 import Todolist from "./Todolist";
+import TodoProvider from "./TodoProvider";
 
-export default function App() {
-  const [search, setSearch] = useState("");
+export const TodoContext = createContext();
 
+export default function TodoApp() {
   return (
-    <div>
-      <div>
-        <h1>Liste des tâches</h1>
-      </div>
-      <div>
-        <input
-          placeholder="Rechercher une tâche..."
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-      <TodoAdd />
-      <Todolist filter={search} />
-      <div>
-        <button onClick={() => localStorage.clear()}>Supprimer tout</button>
-      </div>
-    </div>
-  );
+    <TodoProvider>
+      <Todolist />
+    </TodoProvider>
+  )
 }
