@@ -6,6 +6,7 @@ import Todolist from "./Todolist";
 export default function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [addInput, setAddInput] = useState("");
+  const [search, setSearch] = useState("");
 
   const insert = () => {
     localStorage.setItem(`${getLastIndex() + 1}`, addInput);
@@ -18,7 +19,10 @@ export default function App() {
         <h1>Liste des tâches</h1>
       </div>
       <div>
-        <input placeholder="Rechercher une tâche..." />
+        <input
+          placeholder="Rechercher une tâche..."
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
       <div>
         <button onClick={() => setModalIsOpen((prev) => !prev)}>
@@ -38,7 +42,7 @@ export default function App() {
           <button onClick={insert}>Confirmer</button>
         </ReactModal>
       </div>
-      <Todolist />
+      <Todolist filter={search} />
       <div>
         <button onClick={() => localStorage.clear()}>Supprimer tout</button>
       </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getItems } from "../helpers/localStorageHelp";
 
-export default function Todolist() {
+export default function Todolist(props) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -13,17 +13,19 @@ export default function Todolist() {
   return (
     <div>
       <ul>
-        {items.map((e, i) => (
-          <li key={i}>
-            <div>
-              <p>{e}</p>
-              <input
-                type="checkbox"
-                onClick={() => localStorage.removeItem(i.toString())}
-              />
-            </div>
-          </li>
-        ))}
+        {items
+          .filter((e) => props.filter ? e === props.filter : e)
+          .map((e, i) => (
+            <li key={i}>
+              <div>
+                <p>{e}</p>
+                <input
+                  type="checkbox"
+                  onClick={() => localStorage.removeItem(i.toString())}
+                />
+              </div>
+            </li>
+          ))}
       </ul>
     </div>
   );
