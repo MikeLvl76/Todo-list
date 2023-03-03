@@ -45,10 +45,10 @@ export default function Todolist() {
           Confirmer
         </button>
       </ReactModal>
-      <div className="mx-auto border border-1 border-black bg-gray-200 rounded-lg overflow-auto h-96">
+      <div className="mx-auto border border-1 border-black bg-gray-200 rounded-lg overflow-auto w-96 h-96">
         <ul className="mx-auto w-fit space-y-5 px-3 py-3">
           {todos
-            .filter((e) => (search.length > 0 ? e.text.includes(search) : e)) // improve this
+            .filter((e) => (search.length > 0 ? e.text.startsWith(search) : e))
             .map((todo, i) => (
               <li
                 className="border border-1 border-black rounded-lg px-3 py-3 w-full bg-white hover:bg-black hover:text-white"
