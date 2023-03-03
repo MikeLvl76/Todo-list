@@ -11,8 +11,8 @@ export default function TodoProvider(props) {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = (text) => {
-    setTodos([...todos, { id: Date.now(), text: text }]);
+  const addTodo = (text, priority = 0) => {
+    setTodos([...todos, { id: Date.now(), date: new Date().toLocaleString('fr-FR'), text: text, priority: priority }]);
   };
 
   const removeTodo = (id) => {
