@@ -23,17 +23,20 @@ export default function Todolist() {
         />
       </div>
       <ReactModal
+        className="mx-auto place-self-center mt-5 w-96 h-48 border border-1 border-black rounded-lg flex flex-col bg-white"
         isOpen={modalIsOpen}
         styles={{ width: "50%" }}
         ariaHideApp={false}
         onRequestClose={() => setModalIsOpen((prev) => !prev)}
       >
         <input
+          className="border border-1 border-black mx-auto px-2 py-2 w-min rounded-lg mt-10 mb-5"
           placeholder="Ajouter une tâche"
           maxLength={50}
           onChange={(e) => setAddInput(e.target.value)}
         />
         <button
+          className="mx-auto bg-blue-500 w-min text-white rounded-lg px-2 py-2"
           onClick={() => {
             addTodo(addInput);
             setModalIsOpen((prev) => !prev);
@@ -42,7 +45,7 @@ export default function Todolist() {
           Confirmer
         </button>
       </ReactModal>
-      <div className="mx-auto border border-1 border-black bg-gray-200 rounded-lg">
+      <div className="mx-auto border border-1 border-black bg-gray-200 rounded-lg overflow-auto h-96">
         <ul className="mx-auto w-fit space-y-5 px-3 py-3">
           {todos
             .filter((e) => (search.length > 0 ? e.text.includes(search) : e)) // improve this
@@ -67,10 +70,18 @@ export default function Todolist() {
         </ul>
       </div>
       <div className="mx-auto flex flex-row mt-2 space-x-5">
-        <button className="bg-green-500 text-white rounded-lg px-2 py-2" onClick={() => setModalIsOpen((prev) => !prev)}>
+        <button
+          className="bg-green-500 text-white rounded-lg px-2 py-2"
+          onClick={() => setModalIsOpen((prev) => !prev)}
+        >
           Ajouter une tâche
         </button>
-        <button className="bg-red-500 text-white rounded-lg px-2 py-2" onClick={() => removeAll()}>Supprimer tout</button>
+        <button
+          className="bg-red-500 text-white rounded-lg px-2 py-2"
+          onClick={() => removeAll()}
+        >
+          Supprimer tout
+        </button>
       </div>
     </div>
   );
