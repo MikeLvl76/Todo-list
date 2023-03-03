@@ -9,6 +9,13 @@ const showPriority = (priority) => {
   if (priority === 3) return "Très haute";
 };
 
+const priorityColor = (priority) => {
+  if (priority === 0) return "bg-green-400";
+  if (priority === 1) return "bg-yellow-300";
+  if (priority === 2) return "bg-amber-400";
+  if (priority === 3) return "bg-red-400";
+}
+
 export default function Todolist() {
   const { todos, addTodo, removeTodo, removeAll } = useContext(TodoContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -46,7 +53,7 @@ export default function Todolist() {
           maxLength={50}
           onChange={(e) => setAddInput(e.target.value)}
         />
-        <div className="flex flex-col mx-auto px-2 py-2  mb-5 border border-1 border-blue-500 w-fit border-dotted rounded-lg">
+        <div className="flex flex-col mx-auto px-2 py-2 mb-5 border border-1 border-blue-500 w-fit border-dotted rounded-lg">
           <label className="text-center">Priorité</label>
           <input
             className="w-min mx-auto"
@@ -75,7 +82,7 @@ export default function Todolist() {
             .filter((e) => (search.length > 0 ? e.text.startsWith(search) : e))
             .map((todo, i) => (
               <li
-                className="border border-1 border-black rounded-lg px-3 py-3 w-full bg-white hover:bg-black hover:text-white"
+                className={`border border-1 border-black rounded-lg px-3 py-3 w-full ${priorityColor(todo.priority)} hover:bg-black hover:text-white`}
                 key={i}
                 title={`Ajouté le ${todo.date}`}
               >
