@@ -18,4 +18,6 @@ npm start
 
 # Aperçu
 
-Voici un aperçu de l'application : ![page](./todo-list/public/page.png)
+- Voici un aperçu de l'application : 
+
+![page](./todo-list/public/page.png)
